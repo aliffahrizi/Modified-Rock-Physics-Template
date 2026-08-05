@@ -13,8 +13,10 @@ def scaled(Data, Target):
     b0 = np.min(Data)
     bt = np.max(Data)
     
-    
     return a0 + ((Data - b0) / (bt - b0)) * (at - a0)
+
+def porosityDensity(rho_matrix, rho_bulk, rho_fluid):
+    return (rho_matrix - rho_bulk) / (rho_matrix - rho_fluid)
 
 
 def FluidSaturation(rho_matrix, rho_fluid, rho_water, Vp_matrix, Vp_fluid, Vp_water, porosity, AI):
