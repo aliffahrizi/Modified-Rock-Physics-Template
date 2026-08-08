@@ -17,3 +17,9 @@ __pycache__/
 
 # Data
 data/
+
+# Codex
+.codex/
+
+# data cleaning
+data_cleaning.ipynb
