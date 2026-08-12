@@ -214,3 +214,10 @@ def Vsh_baru(AI, Vp_quartz, Vp_shale, Vp_water, rho_quartz, rho_shale, rho_water
     rho_bottom = rho_quartz * (1 - porosity) - rho_shale * (1 - porosity)
     Vsh = (AI_top + rho_top) / (AI_bottom + rho_bottom)
     return Vsh
+
+def Vsh_from_VP(Vp, phi, SW, Vp_quartz, Vp_shale, Vp_water, Vp_fluid):
+    a = (1 / Vp - phi * (SW / Vp_water + (1 - SW) / Vp_fluid)) / (1 - phi)
+    b = 1 / Vp_quartz
+    c = 1 / Vp_shale - 1 / Vp_quartz
+    
+    return (a - b) / c
