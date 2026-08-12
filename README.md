@@ -55,6 +55,8 @@ The well-log dataset used in this repository is not an original contribution of 
 
 This repository focuses on the implementation of the **Modified Rock Physics Template (RPT)** workflow and the associated Python code.
 
+> This repo's MIT license (see below) covers the code in this repository (`main.ipynb`, `utils.py`, `plot_utils.py`) only. It does not extend to `Data/qsiwell2.csv`, which remains subject to the terms of its original source (Stanford SRGP / SEG Tutorial), as credited above.
+
 ## Workflow
 
 | Stage | What it does |
@@ -85,6 +87,10 @@ This repository focuses on the implementation of the **Modified Rock Physics Tem
 - Regression-derived quartz/shale Vp end members diverge from mineral-physics (moduli-derived) values at the pure end members (~20–25%), because Wyllie's Time-Average equation requires an *effective*, not physical, matrix velocity when calibrated against real, not-fully-consolidated well data. This is expected and explained in the notebook's *Important Note* section — the two approaches converge near the reservoir's characteristic VSH (~0.25), which is what the workflow actually uses downstream.
 - One cell in the end-member validation section (the `porosityKrishna` diagnostic just before the *Important Note*) references `rho_matrix` before it is defined earlier in the notebook — this is a pre-existing cell-ordering issue and still needs to be resolved; the fix depends on which reservoir Vp/porosity values were intended there.
 - `Vsh_from_VP` is defined twice (once unused in the original `utils.py`, now removed from there; once inline in the notebook) — see the `utils.py` note above.
+
+## License
+
+Code in this repository is released under the [MIT License](LICENSE). See the Dataset section above for the separate terms covering `Data/qsiwell2.csv`.
 
 ## Author
 
