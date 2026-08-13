@@ -12,11 +12,13 @@ This project builds a rock-physics workflow that:
 4. Builds reference velocity/density trends with a modified Wyllie Time-Average equation across reservoir shale-volume scenarios.
 5. Fits a modified Fawad-Mondol / Pranatikta rock-physics template via parameter search to estimate fluid saturation, and compares the fitted response against observed elastic behavior.
 
-The end goal is a calibrated template that predicts elastic response from porosity, lithology, and fluid state and can be checked against the observed well log as a validation step.
+The end goal is a calibrated template that predicts elastic response from porosity, lithology, and fluid state — and can be checked against the observed well log as a validation step.
 
 This workflow is the implementation behind the published paper:
 
 > Fahrizi, M. A., & Winardhi, S. (2026). *Multilinear Regression–Based Rock Physics Template Modeling for Sandstone Reservoir Characterization.* Scientific Contribution in Oil and Gas (SCOG). [https://doi.org/10.29017/scog.v49i1.2014](https://doi.org/10.29017/scog.v49i1.2014)
+
+**Note:** this repository demonstrates the modeling workflow using the public Well 2 dataset (see Dataset section below) for reproducibility. The published paper's results were generated using proprietary field data (the "MAF" field, Gabus formation) that cannot be shared publicly. The methodology and code here are the same, but numerical outputs will differ from the paper.
 
 ## Project Structure
 
@@ -81,14 +83,14 @@ This repository focuses on the implementation of the **Modified Rock Physics Tem
 
 1. Place your well-log CSV in `Data/` (matching the schema used by `qsiwell2.csv`: DEPTH, VP, VS, RHO, PHI, NPHI, SW, VSH).
 2. Install dependencies from `requirements.txt`.
-3. Open `main.ipynb` and run cells top to bottom the workflow is sequential; later stages depend on variables calibrated earlier (matrix density, Vp end members, etc.).
+3. Open `main.ipynb` and run cells top to bottom — the workflow is sequential; later stages depend on variables calibrated earlier (matrix density, Vp end members, etc.).
 4. Adjust the depth filter, shale-volume thresholds, and fluid/mineral assumptions in the marked cells to fit a different well or interval.
 
 ## Known Limitations / Open Items
 
 - Regression-derived quartz/shale Vp end members diverge from mineral-physics (moduli-derived) values at the pure end members (~20–25%), because Wyllie's Time-Average equation requires an *effective*, not physical, matrix velocity when calibrated against real, not-fully-consolidated well data. This is expected and explained in the notebook's *Important Note* section — the two approaches converge near the reservoir's characteristic VSH (~0.25), which is what the workflow actually uses downstream.
-- One cell in the end-member validation section (the `porosityKrishna` diagnostic just before the *Important Note*) references `rho_matrix` before it is defined earlier in the notebook this is a pre-existing cell-ordering issue and still needs to be resolved; the fix depends on which reservoir Vp/porosity values were intended there.
-- `Vsh_from_VP` is defined twice (once unused in the original `utils.py`, now removed from there; once inline in the notebook)more  see the `utils.py` note above.
+- One cell in the end-member validation section (the `porosityKrishna` diagnostic just before the *Important Note*) references `rho_matrix` before it is defined earlier in the notebook — this is a pre-existing cell-ordering issue and still needs to be resolved; the fix depends on which reservoir Vp/porosity values were intended there.
+- `Vsh_from_VP` is defined twice (once unused in the original `utils.py`, now removed from there; once inline in the notebook) — see the `utils.py` note above.
 
 ## License
 
