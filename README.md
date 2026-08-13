@@ -79,6 +79,8 @@ This repository focuses on the implementation of the **Modified Rock Physics Tem
 
 `utils.py` is trimmed to the three rock-physics functions `main.ipynb` actually calls: `FluidSaturation`, `porosityKrishna`, and `wyllie_with_vsh`. It's a pared-down copy of a broader thesis codebase — the rest of that module (alternate VSH estimators, quantile matching, elastic-modulus mixing rules, etc.) isn't needed here and was left out for clarity. If a future notebook cell needs one of those, pull it back in from the thesis repo rather than re-adding the whole file.
 
+> Note: `main.ipynb` currently defines its own local `Vsh_from_VP` inline in one cell rather than importing a shared version. Worth consolidating into `utils.py` if that logic is reused elsewhere, so there's a single source of truth.
+
 ## Usage
 
 1. Place your well-log CSV in `Data/` (matching the schema used by `qsiwell2.csv`: DEPTH, VP, VS, RHO, PHI, NPHI, SW, VSH).
