@@ -12,7 +12,11 @@ This project builds a rock-physics workflow that:
 4. Builds reference velocity/density trends with a modified Wyllie Time-Average equation across reservoir shale-volume scenarios.
 5. Fits a modified Fawad-Mondol / Pranatikta rock-physics template via parameter search to estimate fluid saturation, and compares the fitted response against observed elastic behavior.
 
-The end goal is a calibrated template that predicts elastic response from porosity, lithology, and fluid state — and can be checked against the observed well log as a validation step.
+The end goal is a calibrated template that predicts elastic response from porosity, lithology, and fluid state and can be checked against the observed well log as a validation step.
+
+This workflow is the implementation behind the published paper:
+
+> Fahrizi, M. A., & Winardhi, S. (2026). *Multilinear Regression–Based Rock Physics Template Modeling for Sandstone Reservoir Characterization.* Scientific Contribution in Oil and Gas (SCOG). [https://doi.org/10.29017/scog.v49i1.2014](https://doi.org/10.29017/scog.v49i1.2014)
 
 ## Project Structure
 
@@ -91,6 +95,16 @@ This repository focuses on the implementation of the **Modified Rock Physics Tem
 ## License
 
 Code in this repository is released under the [MIT License](LICENSE). See the Dataset section above for the separate terms covering `Data/qsiwell2.csv`.
+
+## Citation
+
+If you reference this work, please cite:
+
+```
+Fahrizi, M. A., & Winardhi, S. (2026). Multilinear Regression–Based Rock Physics
+Template Modeling for Sandstone Reservoir Characterization. Scientific
+Contribution in Oil and Gas (SCOG). https://doi.org/10.29017/scog.v49i1.2014
+```
 
 ## Author
 
