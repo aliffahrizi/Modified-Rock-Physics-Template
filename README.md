@@ -89,8 +89,7 @@ This repository focuses on the implementation of the **Modified Rock Physics Tem
 ## Known Limitations / Open Items
 
 - Regression-derived quartz/shale Vp end members diverge from mineral-physics (moduli-derived) values at the pure end members (~20–25%), because Wyllie's Time-Average equation requires an *effective*, not physical, matrix velocity when calibrated against real, not-fully-consolidated well data. This is expected and explained in the notebook's *Important Note* section — the two approaches converge near the reservoir's characteristic VSH (~0.25), which is what the workflow actually uses downstream.
-- One cell in the end-member validation section (the `porosityKrishna` diagnostic just before the *Important Note*) references `rho_matrix` before it is defined earlier in the notebook — this is a pre-existing cell-ordering issue and still needs to be resolved; the fix depends on which reservoir Vp/porosity values were intended there.
-- `Vsh_from_VP` is defined twice (once unused in the original `utils.py`, now removed from there; once inline in the notebook) — see the `utils.py` note above.
+
 
 ## License
 
